@@ -1,0 +1,69 @@
+const form = document.getElementById('contactForm');
+const statusEl = document.getElementById('formStatus');
+const optionButtons = document.querySelectorAll('.contact-card');
+const phoneLabel = document.getElementById('phoneLabel');
+const phoneInput = document.getElementById('phoneInput');
+let selectedContact = 'WhatsApp';
+
+function refreshContactInput() {
+  if (selectedContact === 'Telegram') {
+    phoneLabel.textContent = 'Номер (или username)';
+    phoneInput.placeholder = '+7XXX... или @username';
+  } else {
+    phoneLabel.textContent = 'Номер телефона';
+    phoneInput.placeholder = '+375 XX XXX XX XX';
+  }
+}
+
+optionButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    optionButtons.forEach(btn => btn.classList.remove('active'));
+    button.classList.add('active');
+    selectedContact = button.dataset.value;
+    refreshContactInput();
+  });
+});
+
+refreshContactInput();
+
+form.addEventListener('submit', async (event) => {
+  event.preventDefault();
+  statusEl.textContent = '';
+
+  const formData = new FormData(form);
+  const body = {
+    name: formData.get('name').trim(),
+    phone: formData.get('phone').trim(),
+    message: formData.get('message').trim(),
+    contact: selectedContact
+  };
+
+  if (!body.name || !body.phone) {
+    statusEl.textContent = 'Пожалуйста, заполните имя и телефон.';
+    return;
+  }
+
+  statusEl.textContent = 'Отправка...';
+  try {
+    const response = await fetch('/send-form', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body)
+    });
+
+    const result = await response.json();
+
+    if (result.success) {
+      statusEl.textContent = 'Заявка успешно отправлена!';
+      form.reset();
+      selectedContact = 'WhatsApp';
+      optionButtons.forEach(btn => btn.classList.toggle('active', btn.dataset.value === selectedContact));
+      refreshContactInput();
+    } else {
+      statusEl.textContent = result.error || 'Ошибка при отправке заявки.';
+    }
+  } catch (error) {
+    console.error(error);
+    statusEl.textContent = 'Ошибка сети. Попробуйте позже.';
+  }
+});
