@@ -24,13 +24,15 @@ app.post('/send-form', async (req, res) => {
     return res.status(400).json({ success: false, error: 'Name, phone and contact method are required.' });
   }
 
-  const text = `📝 <b>Новая заявка</b>%0A` +
-    `━━━━━━━━━━━━━━━━━━━━━━%0A` +
-    `👤 <b>Имя:</b> ${escapeHtml(name)}%0A` +
-    `📞 <b>Телефон:</b> ${escapeHtml(phone)}%0A` +
-    `💬 <b>Способ связи:</b> ${escapeHtml(contact)}%0A` +
-    `━━━━━━━━━━━━━━━━━━━━━━%0A` +
-    `🗂 <b>Сообщение:</b>%0A${escapeHtml(message || '—')}`;
+  const text = [
+    '📝 <b>Новая заявка</b>',
+    '━━━━━━━━━━━━━━━━━━━━━━',
+    `👤 <b>Имя:</b> ${escapeHtml(name)}`,
+    `📞 <b>Телефон:</b> ${escapeHtml(phone)}`,
+    `💬 <b>Способ связи:</b> ${escapeHtml(contact)}`,
+    '━━━━━━━━━━━━━━━━━━━━━━',
+    `🗂 <b>Сообщение:</b>\n${escapeHtml(message || '—')}`
+  ].join('\n');
 
   try {
     const response = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
