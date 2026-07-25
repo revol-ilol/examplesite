@@ -26,9 +26,17 @@ function refreshContactInput() {
   if (selectedContact === 'Telegram') {
     phoneLabel.textContent = 'Номер (или username)';
     phoneInput.placeholder = '+375 XX ... или @username';
+    phoneInput.type = 'text';
+    phoneInput.inputMode = 'text';
+    phoneInput.setAttribute('autocapitalize', 'none');
+    phoneInput.setAttribute('autocomplete', 'off');
   } else {
     phoneLabel.textContent = 'Номер телефона';
     phoneInput.placeholder = '+375 XX XXX XX XX';
+    phoneInput.type = 'tel';
+    phoneInput.inputMode = 'tel';
+    phoneInput.removeAttribute('autocapitalize');
+    phoneInput.removeAttribute('autocomplete');
   }
 }
 
