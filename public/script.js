@@ -6,6 +6,10 @@ const phoneLabel = document.getElementById('phoneLabel');
 const phoneInput = document.getElementById('phoneInput');
 let selectedContact = 'WhatsApp';
 
+function isValidBelarusPhone(value) {
+  return /^\+375(29|25|33)\d{7}$/.test(value);
+}
+
 function showThankYouState() {
   form.querySelectorAll('input, textarea, button[type="submit"], .field-label, .contact-options, p.field-label').forEach((element) => {
     element.style.display = 'none';
@@ -65,6 +69,11 @@ form.addEventListener('submit', async (event) => {
 
   if (!body.name || !body.phone) {
     statusEl.textContent = 'Пожалуйста, заполните имя и телефон.';
+    return;
+  }
+
+  if (selectedContact === 'WhatsApp' && !isValidBelarusPhone(body.phone)) {
+    statusEl.textContent = 'Для WhatsApp введите номер в формате +375XXXXXXXXX, где XX — 29, 25 или 33.';
     return;
   }
 
