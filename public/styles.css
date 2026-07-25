@@ -278,6 +278,24 @@ textarea {
   filter: brightness(1.03);
 }
 
+.thank-you-message {
+  padding: 24px;
+  border-radius: 24px;
+  background: rgba(248, 199, 95, 0.12);
+  border: 1px solid rgba(248, 199, 95, 0.3);
+  text-align: center;
+}
+
+.thank-you-message h2 {
+  margin: 0 0 8px;
+  font-size: 1.4rem;
+}
+
+.thank-you-message p {
+  margin: 0;
+  color: rgba(242, 242, 248, 0.8);
+}
+
 .form-status {
   margin: 0;
   min-height: 1.25rem;

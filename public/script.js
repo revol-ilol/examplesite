@@ -1,14 +1,31 @@
 const form = document.getElementById('contactForm');
 const statusEl = document.getElementById('formStatus');
+const thankYouMessage = document.getElementById('thankYouMessage');
 const optionButtons = document.querySelectorAll('.contact-card');
 const phoneLabel = document.getElementById('phoneLabel');
 const phoneInput = document.getElementById('phoneInput');
 let selectedContact = 'WhatsApp';
 
+function showThankYouState() {
+  form.querySelectorAll('input, textarea, button[type="submit"], .field-label, .contact-options, p.field-label').forEach((element) => {
+    element.style.display = 'none';
+  });
+  thankYouMessage.hidden = false;
+  statusEl.textContent = '';
+}
+
+function resetFormState() {
+  form.querySelectorAll('input, textarea, button[type="submit"], .field-label, .contact-options, p.field-label').forEach((element) => {
+    element.style.display = '';
+  });
+  thankYouMessage.hidden = true;
+  statusEl.textContent = '';
+}
+
 function refreshContactInput() {
   if (selectedContact === 'Telegram') {
     phoneLabel.textContent = 'Номер (или username)';
-    phoneInput.placeholder = '+7XXX... или @username';
+    phoneInput.placeholder = '+375 XX ... или @username';
   } else {
     phoneLabel.textContent = 'Номер телефона';
     phoneInput.placeholder = '+375 XX XXX XX XX';
@@ -43,6 +60,8 @@ form.addEventListener('submit', async (event) => {
     return;
   }
 
+  resetFormState();
+
   statusEl.textContent = 'Отправка...';
   try {
     const response = await fetch('/send-form', {
@@ -54,11 +73,11 @@ form.addEventListener('submit', async (event) => {
     const result = await response.json();
 
     if (result.success) {
-      statusEl.textContent = 'Заявка успешно отправлена!';
       form.reset();
       selectedContact = 'WhatsApp';
       optionButtons.forEach(btn => btn.classList.toggle('active', btn.dataset.value === selectedContact));
       refreshContactInput();
+      showThankYouState();
     } else {
       statusEl.textContent = result.error || 'Ошибка при отправке заявки.';
     }
