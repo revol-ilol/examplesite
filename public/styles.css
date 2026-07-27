@@ -524,12 +524,6 @@ textarea {
     font-size: 0.95rem;
   }
 
-  .offer-card-value {
-    font-size: 5rem !important;
-    line-height: 1.02;
-    font-weight: 900;
-  }
-
   .hero-messengers .contact-card {
     padding: 14px 16px;
   }
@@ -539,46 +533,8 @@ textarea {
   }
 }
 
-/* iPhone specific: boost payout numbers on common iPhone device widths */
-@media only screen and (device-width: 375px) and (-webkit-device-pixel-ratio: 2),
-       only screen and (device-width: 390px) and (-webkit-device-pixel-ratio: 3),
-       only screen and (device-width: 414px) and (-webkit-device-pixel-ratio: 3),
-       only screen and (device-width: 428px) and (-webkit-device-pixel-ratio: 3) {
-  .offer-card-value {
-    /* Stronger, larger size just for iPhones */
-    font-size: clamp(3.8rem, 7vw, 6rem) !important;
-    line-height: 1.02;
-  }
-}
-
-/* Normal phone screens (common Android/iPhone sizes) */
-@media (min-width: 360px) and (max-width: 540px) {
-  .offer-card-value {
-    font-size: 5rem !important;
-    line-height: 1.01;
-  }
-}
-
 /* Force larger payout numbers on all mobile browsers via UA detection */
 .mobile-browser .offer-card-value {
-  font-size: 5.2rem !important;
-}
-
-/* Force larger payout numbers on all mobile widths */
-@media (max-width: 940px) {
-  .offer-card-value {
-    font-size: 4.6rem !important;
-  }
-}
-
-@media (max-width: 820px) {
-  .offer-card-value {
-    font-size: 5rem !important;
-  }
-}
-
-@media (max-width: 640px) {
-  .offer-card-value {
-    font-size: 5.4rem !important;
-  }
+  font-size: 8rem !important;
+  line-height: 1.01;
 }
