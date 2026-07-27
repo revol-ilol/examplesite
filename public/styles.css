@@ -170,12 +170,13 @@ body {
   gap: 18px;
 }
 
-.offer-card {
+..offer-card {
   padding: 28px;
   border-radius: 34px;
   background: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.16);
   box-shadow: 0 24px 48px rgba(0, 0, 0, 0.18);
+  text-align: center;
 }
 
 .offer-card-label {
@@ -520,6 +521,10 @@ textarea {
   .feature-card p,
   .field-label {
     font-size: 0.95rem;
+  }
+
+  .offer-card-value {
+    font-size: clamp(2.2rem, 7vw, 3.4rem);
   }
 
   .hero-messengers .contact-card {
