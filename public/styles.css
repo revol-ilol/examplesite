@@ -559,6 +559,11 @@ textarea {
   }
 }
 
+/* Force larger payout numbers on all mobile browsers via UA detection */
+.mobile-browser .offer-card-value {
+  font-size: 5.2rem !important;
+}
+
 /* Force larger payout numbers on all mobile widths */
 @media (max-width: 940px) {
   .offer-card-value {
