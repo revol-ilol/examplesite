@@ -190,7 +190,7 @@ body {
 
 .offer-card-value {
   margin: 0;
-  font-size: clamp(2.6rem, 5.2vw, 4.2rem);
+  font-size: clamp(2rem, 3vw, 3rem);
   font-weight: 900;
   letter-spacing: -0.03em;
   color: #ffffff;
@@ -450,7 +450,7 @@ textarea {
   }
 
   .offer-card-value {
-    font-size: 7rem !important;
+    font-size: clamp(2rem, 4vw, 2.6rem);
     line-height: 1.01;
   }
 }
@@ -490,7 +490,7 @@ textarea {
   }
 
   .offer-card-value {
-    font-size: 7rem !important;
+    font-size: clamp(2rem, 4vw, 2.6rem);
     line-height: 1.01;
   }
 
@@ -535,7 +535,7 @@ textarea {
   }
 
   .offer-card-value {
-    font-size: 7rem !important;
+    font-size: clamp(2rem, 4vw, 2.6rem);
     line-height: 1.01;
   }
 
