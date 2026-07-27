@@ -450,7 +450,7 @@ textarea {
   }
 
   .offer-card-value {
-    font-size: 7rem !important;
+    font-size: 9rem !important;
     line-height: 1.01;
   }
 }
@@ -490,7 +490,7 @@ textarea {
   }
 
   .offer-card-value {
-    font-size: 7rem !important;
+    font-size: 9rem !important;
     line-height: 1.01;
   }
 
@@ -535,7 +535,7 @@ textarea {
   }
 
   .offer-card-value {
-    font-size: 7rem !important;
+    font-size: 9rem !important;
     line-height: 1.01;
   }
 
@@ -550,6 +550,6 @@ textarea {
 
 /* Force larger payout numbers on all mobile browsers via UA detection */
 body.mobile-browser .offer-card-value {
-  font-size: 7rem !important;
+  font-size: 9rem !important;
   line-height: 1.01;
 }
