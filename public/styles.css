@@ -80,6 +80,33 @@ body {
   color: #101012;
   font-weight: 800;
   text-decoration: none;
+  box-shadow: 0 18px 40px rgba(248, 199, 95, 0.15);
+}
+
+@media (max-width: 860px) {
+  .hero-actions,
+  .contact-options {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-messengers {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero-messengers .contact-card,
+  .hero-messengers .contact-card.active,
+  .hero-messengers .contact-card:hover {
+    width: 100%;
+  }
+
+  .hero-messengers .contact-card {
+    justify-content: space-between;
+  }
+
+  .primary-button {
+    width: 100%;
+  }
 }
 
 .hero-messengers {
@@ -111,7 +138,7 @@ body {
 
 .info-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 18px;
 }
 
@@ -135,64 +162,105 @@ body {
 
 .offer-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 18px;
-}
-
-.offer-eyebrow {
-  margin: 0;
-  font-size: clamp(1.75rem, 3vw, 2.6rem);
-  line-height: 1.02;
-  font-weight: 900;
-}
-
-.offer-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 18px;
 }
 
 .offer-card {
-  padding: 24px;
-  border-radius: 28px;
-  background: rgba(255, 255, 255, 0.05);
+  padding: 26px;
+  border-radius: 32px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.14);
+}
+
+.offer-card-label {
+  margin: 0 0 12px;
+  font-size: 0.95rem;
+  color: rgba(242, 242, 248, 0.74);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.offer-card-value {
+  margin: 0;
+  font-size: clamp(1.8rem, 3.2vw, 2.6rem);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  color: #ffffff;
+}
+
+.feature-section {
+  display: grid;
+  gap: 24px;
+  padding: 28px;
+  border-radius: 32px;
+  background: rgba(16, 17, 24, 0.9);
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.offer-card-label {
-  margin: 0 0 14px;
-  font-size: 0.95rem;
-  color: rgba(242, 242, 248, 0.7);
-}
-
-.offer-card-value {
+.feature-section h2 {
   margin: 0;
-  font-size: clamp(1.75rem, 3.2vw, 2.4rem);
-  font-weight: 900;
-  letter-spacing: -0.03em;
-}
-  border-radius: 32px;
-  background: rgba(11, 11, 16, 0.9);
-  border: 1px solid rgba(255, 255, 255, 0.09);
+  font-size: clamp(2rem, 3vw, 2.8rem);
 }
 
-.offer-card-label {
-  margin: 0 0 10px;
-  font-size: 0.98rem;
-  color: rgba(242, 242, 248, 0.76);
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 18px;
 }
 
-.offer-card-value {
+.feature-card {
+  padding: 24px;
+  border-radius: 28px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.08));
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.02);
+  transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(248, 199, 95, 0.35);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.12));
+}
+
+.feature-card h3 {
+  margin: 0 0 12px;
+  font-size: 1.05rem;
+}
+
+.feature-card p {
   margin: 0;
-  font-size: clamp(1.75rem, 3.2vw, 2.5rem);
-  font-weight: 900;
-  letter-spacing: -0.03em;
+  line-height: 1.75;
+  color: rgba(242, 242, 248, 0.78);
 }
 
 .contact-options {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 14px;
+}
+
+.hero-messengers .contact-card {
+  min-width: 170px;
+  padding: 16px 18px;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.hero-messengers .contact-card .contact-icon {
+  width: 38px;
+  height: 38px;
+}
+
+.hero-messengers .contact-card:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.hero-messengers .contact-card.active {
+  background: rgba(248, 199, 95, 0.16);
+  border-color: rgba(248, 199, 95, 0.5);
 }
 
 .contact-card {
@@ -218,22 +286,6 @@ body {
 .contact-card.active {
   border-color: rgba(248, 199, 95, 0.75);
   background: rgba(248, 199, 95, 0.1);
-}
-
-.contact-icon {
-  width: 52px;
-  height: 52px;
-  min-width: 52px;
-  border-radius: 16px;
-  display: grid;
-  place-items: center;
-  background: rgba(255, 255, 255, 0.08);
-  color: #fff;
-}
-
-.contact-icon svg {
-  width: 24px;
-  height: 24px;
 }
 
 .contact-title {
@@ -305,22 +357,6 @@ textarea:invalid {
   border-color: #e25353;
 }
 
-.contact-options {
-  display: flex;
-  gap: 12px;
-  justify-content: flex-start;
-}
-
-.hero-card {
-  display: grid;
-  gap: 24px;
-  padding: 28px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 32px;
-  background: rgba(16, 17, 24, 0.82);
-  backdrop-filter: blur(24px);
-}
-
 input::placeholder,
 textarea::placeholder {
   color: rgba(242, 242, 248, 0.44);
@@ -328,40 +364,6 @@ textarea::placeholder {
 
 textarea {
   resize: vertical;
-}
-
-.contact-options {
-  display: flex;
-  gap: 12px;
-  justify-content: flex-start;
-}
-
-.contact-card {
-  flex: 0 1 170px;
-  aspect-ratio: 1 / 1;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 8px;
-  align-items: center;
-  justify-items: center;
-  padding: 14px;
-  border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  background: rgba(255, 255, 255, 0.04);
-  color: inherit;
-  text-align: center;
-  cursor: pointer;
-  transition: border-color 0.18s ease, transform 0.18s ease, background 0.18s ease;
-}
-
-.contact-card:hover {
-  transform: translateY(-1px);
-  border-color: rgba(248, 199, 95, 0.44);
-}
-
-.contact-card.active {
-  border-color: rgba(248, 199, 95, 0.75);
-  background: rgba(248, 199, 95, 0.12);
 }
 
 .contact-icon {
@@ -380,16 +382,6 @@ textarea {
 
 .contact-icon.telegram {
   background: #3f8cff;
-}
-
-.contact-title {
-  margin: 0;
-  font-size: 0.98rem;
-  font-weight: 700;
-}
-
-.contact-desc {
-  display: none;
 }
 
 .submit-button {
@@ -440,7 +432,8 @@ textarea {
   .info-section,
   .hero-card,
   .offer-grid,
-  .info-grid {
+  .info-grid,
+  .feature-grid {
     grid-template-columns: 1fr;
   }
 
@@ -450,14 +443,80 @@ textarea {
   }
 }
 
-@media (max-width: 720px) {
+@media (max-width: 820px) {
+  .page-shell {
+    padding: 18px 14px 30px;
+  }
+
   .hero-section,
-  .hero-card,
-  .info-section {
-    padding: 20px;
+  .info-section,
+  .feature-section,
+  .hero-card {
+    padding: 22px;
+  }
+
+  .offer-card,
+  .info-card,
+  .feature-card {
+    min-height: 170px;
+  }
+
+  .hero-top h1 {
+    font-size: clamp(2rem, 9vw, 3.2rem);
+  }
+
+  .hero-actions,
+  .contact-options,
+  .hero-messengers {
+    gap: 14px;
+  }
+
+  .hero-messengers .contact-card,
+  .contact-card {
+    width: 100%;
+  }
+
+  .contact-card {
+    grid-template-columns: 44px 1fr;
+    padding: 16px;
+  }
+
+  .contact-icon {
+    width: 38px;
+    height: 38px;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-section,
+  .info-section,
+  .feature-section,
+  .hero-card {
+    padding: 18px;
   }
 
   .primary-button {
     width: 100%;
+    padding: 16px 18px;
+  }
+
+  .hero-top h1 {
+    font-size: clamp(1.9rem, 10vw, 2.8rem);
+  }
+
+  .hero-text,
+  .offer-card p,
+  .info-card p,
+  .feature-card p,
+  .field-label {
+    font-size: 0.95rem;
+  }
+
+  .hero-messengers .contact-card {
+    padding: 14px 16px;
+  }
+
+  .contact-card {
+    gap: 12px;
   }
 }
