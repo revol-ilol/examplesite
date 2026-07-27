@@ -444,8 +444,7 @@ textarea {
   }
 
   .hero-messengers {
-    flex-direction: column;
-    align-items: stretch;
+    justify-content: space-between;
   }
 }
 
@@ -477,8 +476,13 @@ textarea {
     gap: 14px;
   }
 
-  .hero-messengers .contact-card,
-  .contact-card {
+  .hero-messengers .contact-card {
+    flex: 1;
+    min-width: 135px;
+    width: auto;
+  }
+
+  .contact-options .contact-card {
     width: 100%;
   }
 
