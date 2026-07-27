@@ -21,16 +21,15 @@ body {
 }
 
 .page-shell {
-  max-width: 1200px;
+  max-width: 1120px;
   margin: 0 auto;
   padding: 24px 16px 40px;
 }
 
-.offer-section {
+.hero-section {
   display: grid;
-  gap: 20px;
+  gap: 26px;
   padding: 32px;
-  margin-bottom: 26px;
   border-radius: 36px;
   background: linear-gradient(180deg, rgba(255, 205, 95, 0.12), rgba(16, 17, 24, 0.9));
   border: 1px solid rgba(255, 255, 255, 0.16);
@@ -38,11 +37,106 @@ body {
   backdrop-filter: blur(28px);
 }
 
-.offer-head {
+.hero-top {
+  display: grid;
+  gap: 20px;
+}
+
+.offer-eyebrow {
+  margin: 0;
+  font-size: clamp(1.8rem, 3vw, 2.8rem);
+  line-height: 1.02;
+  font-weight: 900;
+  letter-spacing: -0.04em;
+}
+
+.hero-top h1 {
+  margin: 0;
+  font-size: clamp(2.4rem, 4vw, 4rem);
+  line-height: 1.05;
+}
+
+.hero-text {
+  margin: 0;
+  max-width: 760px;
+  color: rgba(242, 242, 248, 0.8);
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+.hero-actions {
+  display: grid;
+  gap: 18px;
+}
+
+.primary-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  padding: 18px 32px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #f8c75f 0%, #f7a21e 100%);
+  color: #101012;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.hero-messengers {
   display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 14px;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+
+.messenger-label {
+  color: rgba(242, 242, 248, 0.8);
+  font-size: 0.95rem;
+  white-space: nowrap;
+}
+
+.info-section {
+  display: grid;
+  gap: 24px;
+  padding: 28px;
+  border-radius: 32px;
+  background: rgba(16, 17, 24, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.info-section h2 {
+  margin: 0;
+  font-size: clamp(2rem, 3vw, 2.8rem);
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.info-card {
+  padding: 24px;
+  border-radius: 26px;
+  background: rgba(11, 11, 16, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.info-card h3 {
+  margin: 0 0 12px;
+  font-size: 1.1rem;
+}
+
+.info-card p {
+  margin: 0;
+  line-height: 1.75;
+  color: rgba(242, 242, 248, 0.76);
+}
+
+.offer-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
 }
 
 .offer-eyebrow {
@@ -59,7 +153,24 @@ body {
 }
 
 .offer-card {
-  padding: 28px;
+  padding: 24px;
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.offer-card-label {
+  margin: 0 0 14px;
+  font-size: 0.95rem;
+  color: rgba(242, 242, 248, 0.7);
+}
+
+.offer-card-value {
+  margin: 0;
+  font-size: clamp(1.75rem, 3.2vw, 2.4rem);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+}
   border-radius: 32px;
   background: rgba(11, 11, 16, 0.9);
   border: 1px solid rgba(255, 255, 255, 0.09);
@@ -180,13 +291,34 @@ body {
 input,
 textarea {
   width: 100%;
-  border: 1px solid rgba(255, 255, 255, 0.09);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   background: rgba(255, 255, 255, 0.04);
   color: #f6f7fb;
   padding: 16px 18px;
   border-radius: 18px;
   font-size: 1rem;
   outline: none;
+}
+
+input:invalid,
+textarea:invalid {
+  border-color: #e25353;
+}
+
+.contact-options {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-start;
+}
+
+.hero-card {
+  display: grid;
+  gap: 24px;
+  padding: 28px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 32px;
+  background: rgba(16, 17, 24, 0.82);
+  backdrop-filter: blur(24px);
 }
 
 input::placeholder,
@@ -303,12 +435,29 @@ textarea {
   font-size: 0.95rem;
 }
 
+@media (max-width: 940px) {
+  .hero-section,
+  .info-section,
+  .hero-card,
+  .offer-grid,
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-messengers {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
 @media (max-width: 720px) {
-  .hero-card {
+  .hero-section,
+  .hero-card,
+  .info-section {
     padding: 20px;
   }
 
-  .offer-grid {
-    grid-template-columns: 1fr;
+  .primary-button {
+    width: 100%;
   }
 }
