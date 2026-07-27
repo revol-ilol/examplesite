@@ -531,14 +531,10 @@ textarea {
   .contact-card {
     gap: 12px;
   }
-  .offer-card-value {
-   font-size: 12rem !important;
-   line-height: 1.01;
-  }
 }
 
 /* Force larger payout numbers on all mobile browsers via UA detection */
-.mobile-browser .offer-card-value {
+body.mobile-browser .offer-card-value {
   font-size: 12rem !important;
   line-height: 1.01;
 }
