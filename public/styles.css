@@ -524,8 +524,11 @@ textarea {
     font-size: 0.95rem;
   }
 
+  /* Bigger payout numbers for very small screens (iPhone) */
   .offer-card-value {
-    font-size: clamp(2.2rem, 7vw, 3.4rem);
+    font-size: clamp(3rem, 10.5vw, 4.6rem);
+    line-height: 1.02;
+    font-weight: 900;
   }
 
   .hero-messengers .contact-card {
