@@ -67,13 +67,14 @@ body {
 .hero-actions {
   display: grid;
   gap: 18px;
+  justify-items: center;
 }
 
 .primary-button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: fit-content;
+  width: min(100%, 440px);
   padding: 18px 32px;
   border-radius: 999px;
   background: linear-gradient(135deg, #f8c75f 0%, #f7a21e 100%);
