@@ -448,6 +448,11 @@ textarea {
   .hero-messengers {
     justify-content: space-between;
   }
+
+  .offer-card-value {
+    font-size: 7rem !important;
+    line-height: 1.01;
+  }
 }
 
 @media (max-width: 820px) {
@@ -482,6 +487,11 @@ textarea {
     flex: 1;
     min-width: 135px;
     width: auto;
+  }
+
+  .offer-card-value {
+    font-size: 7rem !important;
+    line-height: 1.01;
   }
 
   .contact-options .contact-card {
@@ -522,6 +532,11 @@ textarea {
   .feature-card p,
   .field-label {
     font-size: 0.95rem;
+  }
+
+  .offer-card-value {
+    font-size: 7rem !important;
+    line-height: 1.01;
   }
 
   .hero-messengers .contact-card {
