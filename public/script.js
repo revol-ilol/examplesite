@@ -6,14 +6,6 @@ const phoneLabel = document.getElementById('phoneLabel');
 const phoneInput = document.getElementById('phoneInput');
 let selectedContact = 'WhatsApp';
 
-function isMobileUserAgent() {
-  return /Android|webOS|iPhone|iPad|iPod|Mobile|BlackBerry|BB10|IEMobile|Opera Mini|CriOS|FxiOS/i.test(navigator.userAgent);
-}
-
-if (isMobileUserAgent()) {
-  document.body.classList.add('mobile-browser');
-}
-
 function isValidBelarusPhone(value) {
   return /^\+375(29|25|33)\d{7}$/.test(value);
 }

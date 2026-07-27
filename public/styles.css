@@ -450,7 +450,7 @@ textarea {
   }
 
   .offer-card-value {
-    font-size: 9rem !important;
+    font-size: 7rem !important;
     line-height: 1.01;
   }
 }
@@ -490,7 +490,7 @@ textarea {
   }
 
   .offer-card-value {
-    font-size: 9rem !important;
+    font-size: 7rem !important;
     line-height: 1.01;
   }
 
@@ -527,7 +527,7 @@ textarea {
   }
 
   .hero-text,
-  .offer-card p,
+  .offer-card .offer-card-label,
   .info-card p,
   .feature-card p,
   .field-label {
@@ -535,7 +535,7 @@ textarea {
   }
 
   .offer-card-value {
-    font-size: 9rem !important;
+    font-size: 7rem !important;
     line-height: 1.01;
   }
 
@@ -546,10 +546,4 @@ textarea {
   .contact-card {
     gap: 12px;
   }
-}
-
-/* Force larger payout numbers on all mobile browsers via UA detection */
-body.mobile-browser .offer-card-value {
-  font-size: 9rem !important;
-  line-height: 1.01;
 }
