@@ -7,11 +7,23 @@ const phoneInput = document.getElementById('phoneInput');
 let selectedContact = 'WhatsApp';
 
 function isMobileUserAgent() {
-  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|BB10|IEMobile|Opera Mini/i.test(navigator.userAgent);
+  return /Android|webOS|iPhone|iPad|iPod|Mobile|BlackBerry|BB10|IEMobile|Opera Mini|CriOS|FxiOS/i.test(navigator.userAgent);
 }
 
 if (isMobileUserAgent()) {
   document.body.classList.add('mobile-browser');
+  const debugBanner = document.createElement('div');
+  debugBanner.textContent = 'MOBILE UA DETECTED';
+  debugBanner.style.position = 'fixed';
+  debugBanner.style.top = '8px';
+  debugBanner.style.left = '8px';
+  debugBanner.style.padding = '8px 12px';
+  debugBanner.style.background = 'rgba(255, 0, 0, 0.8)';
+  debugBanner.style.color = '#fff';
+  debugBanner.style.fontSize = '0.9rem';
+  debugBanner.style.zIndex = '9999';
+  debugBanner.style.borderRadius = '12px';
+  document.body.appendChild(debugBanner);
 }
 
 function isValidBelarusPhone(value) {
