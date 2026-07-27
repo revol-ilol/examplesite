@@ -171,7 +171,7 @@ body {
   gap: 18px;
 }
 
-..offer-card {
+.offer-card {
   padding: 28px;
   border-radius: 34px;
   background: rgba(255, 255, 255, 0.1);
@@ -190,7 +190,7 @@ body {
 
 .offer-card-value {
   margin: 0;
-  font-size: clamp(1.85rem, 3.2vw, 2.8rem);
+  font-size: clamp(2.6rem, 5.2vw, 4.2rem);
   font-weight: 900;
   letter-spacing: -0.03em;
   color: #ffffff;
@@ -546,9 +546,8 @@ textarea {
        only screen and (device-width: 414px) and (-webkit-device-pixel-ratio: 3),
        only screen and (device-width: 428px) and (-webkit-device-pixel-ratio: 3) {
   .offer-card-value {
-    font-size: 5vw;
-    /* Ensure a comfortable max size on large iPhones */
-    font-size: clamp(3.4rem, 6.4vw, 5.2rem);
+    /* Stronger, larger size just for iPhones */
+    font-size: clamp(3.8rem, 7vw, 6rem) !important;
     line-height: 1.02;
   }
 }
