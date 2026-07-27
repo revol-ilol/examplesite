@@ -552,6 +552,14 @@ textarea {
   }
 }
 
+/* Normal phone screens (common Android/iPhone sizes) */
+@media (min-width: 360px) and (max-width: 480px) {
+  .offer-card-value {
+    font-size: clamp(4rem, 10vw, 7rem) !important;
+    line-height: 1.01;
+  }
+}
+
 /* Force larger payout numbers on all mobile widths */
 @media (max-width: 940px) {
   .offer-card-value {
