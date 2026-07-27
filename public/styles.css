@@ -539,3 +539,16 @@ textarea {
     gap: 12px;
   }
 }
+
+/* iPhone specific: boost payout numbers on common iPhone device widths */
+@media only screen and (device-width: 375px) and (-webkit-device-pixel-ratio: 2),
+       only screen and (device-width: 390px) and (-webkit-device-pixel-ratio: 3),
+       only screen and (device-width: 414px) and (-webkit-device-pixel-ratio: 3),
+       only screen and (device-width: 428px) and (-webkit-device-pixel-ratio: 3) {
+  .offer-card-value {
+    font-size: 5vw;
+    /* Ensure a comfortable max size on large iPhones */
+    font-size: clamp(3.4rem, 6.4vw, 5.2rem);
+    line-height: 1.02;
+  }
+}
