@@ -2,8 +2,10 @@ const form = document.getElementById('contactForm');
 const statusEl = document.getElementById('formStatus');
 const thankYouMessage = document.getElementById('thankYouMessage');
 const optionButtons = document.querySelectorAll('.contact-card');
+const heroContactButtons = document.querySelectorAll('.hero-messengers .contact-card');
 const phoneLabel = document.getElementById('phoneLabel');
 const phoneInput = document.getElementById('phoneInput');
+const contactForm = document.getElementById('contactForm');
 let selectedContact = 'WhatsApp';
 
 function isValidBelarusPhone(value) {
@@ -50,6 +52,13 @@ optionButtons.forEach(button => {
     button.classList.add('active');
     selectedContact = button.dataset.value;
     refreshContactInput();
+  });
+});
+
+heroContactButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    contactForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    window.setTimeout(() => phoneInput.focus({ preventScroll: true }), 350);
   });
 });
 
