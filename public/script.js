@@ -1,12 +1,18 @@
 const form = document.getElementById('contactForm');
 const statusEl = document.getElementById('formStatus');
 const thankYouMessage = document.getElementById('thankYouMessage');
-const optionButtons = document.querySelectorAll('.contact-card');
+const formOptionButtons = document.querySelectorAll('.contact-options .contact-card');
 const heroContactButtons = document.querySelectorAll('.hero-messengers .contact-card');
 const phoneLabel = document.getElementById('phoneLabel');
 const phoneInput = document.getElementById('phoneInput');
 const contactForm = document.getElementById('contactForm');
 let selectedContact = 'WhatsApp';
+
+function updateContactActive() {
+  [...formOptionButtons, ...heroContactButtons].forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.value === selectedContact);
+  });
+}
 
 function isValidBelarusPhone(value) {
   return /^\+375(29|25|33)\d{7}$/.test(value);
@@ -36,6 +42,13 @@ function refreshContactInput() {
     phoneInput.inputMode = 'text';
     phoneInput.setAttribute('autocapitalize', 'none');
     phoneInput.setAttribute('autocomplete', 'off');
+  } else if (selectedContact === 'Other') {
+    phoneLabel.textContent = 'Контакт для связи';
+    phoneInput.placeholder = '+375 XX XXX XX XX или другой контакт';
+    phoneInput.type = 'text';
+    phoneInput.inputMode = 'text';
+    phoneInput.setAttribute('autocapitalize', 'none');
+    phoneInput.setAttribute('autocomplete', 'off');
   } else {
     phoneLabel.textContent = 'Номер телефона';
     phoneInput.placeholder = '+375 XX XXX XX XX';
@@ -46,22 +59,25 @@ function refreshContactInput() {
   }
 }
 
-optionButtons.forEach(button => {
+formOptionButtons.forEach(button => {
   button.addEventListener('click', () => {
-    optionButtons.forEach(btn => btn.classList.remove('active'));
-    button.classList.add('active');
     selectedContact = button.dataset.value;
+    updateContactActive();
     refreshContactInput();
   });
 });
 
 heroContactButtons.forEach(button => {
   button.addEventListener('click', () => {
+    selectedContact = button.dataset.value;
+    updateContactActive();
+    refreshContactInput();
     contactForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
     window.setTimeout(() => phoneInput.focus({ preventScroll: true }), 350);
   });
 });
 
+updateContactActive();
 refreshContactInput();
 
 form.addEventListener('submit', async (event) => {
@@ -101,7 +117,7 @@ form.addEventListener('submit', async (event) => {
     if (result.success) {
       form.reset();
       selectedContact = 'WhatsApp';
-      optionButtons.forEach(btn => btn.classList.toggle('active', btn.dataset.value === selectedContact));
+      updateContactActive();
       refreshContactInput();
       showThankYouState();
     } else {
