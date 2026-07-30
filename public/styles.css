@@ -392,6 +392,16 @@ textarea {
   background: #3f8cff;
 }
 
+.contact-icon.viber {
+  background: #6a4bb2;
+}
+
+.contact-icon img.viber-icon {
+  width: 22px;
+  height: 22px;
+  display: block;
+}
+
 .submit-button {
   margin-top: 6px;
   width: 100%;
