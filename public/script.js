@@ -44,8 +44,8 @@ function refreshContactInput() {
   } else {
     phoneLabel.textContent = 'Номер телефона';
     phoneInput.placeholder = '+375 XX XXX XX XX';
-    phoneInput.type = 'text';
-    phoneInput.inputMode = 'text';
+    phoneInput.type = 'tel';
+    phoneInput.inputMode = 'tel';
     phoneInput.removeAttribute('autocapitalize');
     phoneInput.removeAttribute('autocomplete');
     if (!phoneInput.value.trim()) {
