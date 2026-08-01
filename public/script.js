@@ -14,10 +14,6 @@ function updateContactActive() {
   });
 }
 
-function isValidBelarusPhone(value) {
-  return /^\+375(29|25|33)\d{7}$/.test(value);
-}
-
 function showThankYouState() {
   form.querySelectorAll('input, textarea, button[type="submit"], .field-label, .contact-options, p.field-label').forEach((element) => {
     element.style.display = 'none';
@@ -42,6 +38,9 @@ function refreshContactInput() {
     phoneInput.inputMode = 'text';
     phoneInput.setAttribute('autocapitalize', 'none');
     phoneInput.setAttribute('autocomplete', 'off');
+    if (!phoneInput.value.trim()) {
+      phoneInput.value = '+375';
+    }
   } else {
     phoneLabel.textContent = 'Номер телефона';
     phoneInput.placeholder = '+375 XX XXX XX XX';
@@ -49,6 +48,9 @@ function refreshContactInput() {
     phoneInput.inputMode = 'tel';
     phoneInput.removeAttribute('autocapitalize');
     phoneInput.removeAttribute('autocomplete');
+    if (!phoneInput.value.trim()) {
+      phoneInput.value = '+375';
+    }
   }
 }
 
@@ -87,11 +89,6 @@ form.addEventListener('submit', async (event) => {
 
   if (!body.name || !body.phone) {
     statusEl.textContent = 'Пожалуйста, заполните имя и телефон.';
-    return;
-  }
-
-  if ((selectedContact === 'WhatsApp' || selectedContact === 'Viber') && !isValidBelarusPhone(body.phone)) {
-    statusEl.textContent = 'Для WhatsApp или Viber введите номер в формате +375XXXXXXXXX, где XX — 29, 25 или 33.';
     return;
   }
 
