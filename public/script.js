@@ -14,6 +14,22 @@ function updateContactActive() {
   });
 }
 
+async function trackTikTokEvent(eventName, properties = {}) {
+  try {
+    if (window.ttq) {
+      window.ttq.track(eventName, properties);
+    }
+
+    await fetch('/track-tiktok-event', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ eventName, properties })
+    });
+  } catch (error) {
+    console.error('TikTok tracking error:', error);
+  }
+}
+
 function showThankYouState() {
   form.querySelectorAll('input, textarea, button[type="submit"], .field-label, .contact-options, p.field-label').forEach((element) => {
     element.style.display = 'none';
@@ -75,6 +91,15 @@ heroContactButtons.forEach(button => {
 updateContactActive();
 refreshContactInput();
 
+document.querySelectorAll('.primary-button, .submit-button').forEach((button) => {
+  button.addEventListener('click', () => {
+    trackTikTokEvent('ClickButton', {
+      content_name: button.textContent.trim(),
+      button_id: button.id || 'cta'
+    });
+  });
+});
+
 form.addEventListener('submit', async (event) => {
   event.preventDefault();
   statusEl.textContent = '';
@@ -107,6 +132,30 @@ form.addEventListener('submit', async (event) => {
       selectedContact = 'WhatsApp';
       updateContactActive();
       refreshContactInput();
+      await trackTikTokEvent('Lead', {
+        content_name: 'Заявка',
+        content_type: 'form',
+        value: 1,
+        currency: 'RUB',
+        phone: body.phone,
+        external_id: body.name
+      });
+      await trackTikTokEvent('Contact', {
+        content_name: 'Заявка',
+        content_type: 'form',
+        value: 1,
+        currency: 'RUB',
+        phone: body.phone,
+        external_id: body.name
+      });
+      await trackTikTokEvent('CompleteRegistration', {
+        content_name: 'Заявка',
+        content_type: 'form',
+        value: 1,
+        currency: 'RUB',
+        phone: body.phone,
+        external_id: body.name
+      });
       showThankYouState();
     } else {
       statusEl.textContent = result.error || 'Ошибка при отправке заявки.';
