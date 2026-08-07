@@ -445,6 +445,35 @@ textarea {
   font-size: 0.95rem;
 }
 
+.privacy-footer {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 16px 40px;
+}
+
+.privacy-card {
+  padding: 28px;
+  border-radius: 28px;
+  background: rgba(16, 17, 24, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.16);
+}
+
+.privacy-card h2 {
+  margin: 0 0 14px;
+  font-size: clamp(1.4rem, 2.4vw, 1.8rem);
+}
+
+.privacy-card p {
+  margin: 0 0 12px;
+  line-height: 1.8;
+  color: rgba(242, 242, 248, 0.82);
+}
+
+.privacy-card p:last-child {
+  margin-bottom: 0;
+}
+
 @media (max-width: 940px) {
   .hero-section,
   .info-section,
